@@ -1,0 +1,7 @@
+base   hob
+author Hoang Bui
+email  bmhoang@outlook.com
+date   2022-03-16
+name   HoB Feature
+desc   Custom feature for HoB Wiki
+url    https://wiki.hiheo.com/dev:dokuwiki_hob
