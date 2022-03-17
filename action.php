@@ -9,7 +9,7 @@
 /**
  * Register handler
  */
-class ActionPluginHoB extends DokuWiki_Action_Plugin
+class action_plugin_hob extends DokuWiki_Action_Plugin
 {
 
     /**
@@ -35,7 +35,7 @@ class ActionPluginHoB extends DokuWiki_Action_Plugin
      */
     public function handleSearchQuery(Doku_Event $event, $param)
     {
-        $event['query'] = $this->VNUnsigned($event['query']);
+        $event->data['query'] = $this->VNUnsigned($event->data['query']);
     }
 
     /**
@@ -47,7 +47,7 @@ class ActionPluginHoB extends DokuWiki_Action_Plugin
      */
     public function handleSearchQueryPageLookup(Doku_Event $event, $param)
     {
-        $event['id'] = $this->VNUnsigned($event['id']);
+        $event->data['id'] = $this->VNUnsigned($event->data['id']);
     }
 
     /**
@@ -75,22 +75,20 @@ class ActionPluginHoB extends DokuWiki_Action_Plugin
 
     function VNUnsigned($str) {
         return preg_replace(array(
-            "/([àáạảãâầấậẩẫăằắặẳẵ])/",
-            "/([èéẹẻẽêềếệểễ])/",
-            "/([ìíịỉĩ])/",
-            "/([òóọỏõôồốộổỗơờớợởỡ])/",
-            "/([ùúụủũưừứựửữ])/",
-            "/([ỳýỵỷỹ])/",
+            "/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/",
+            "/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/",
+            "/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/",
+            "/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/",
+            "/(ì|í|ị|ỉ|ĩ)/",
+            "/(ỳ|ý|ỵ|ỷ|ỹ)/",
             "/(đ)/",
-            "/([ÀÁẠẢÃÂẦẤẬẨẪĂẰẮẶẲẴ])/",
-            "/([ÈÉẸẺẼÊỀẾỆỂỄ])/",
-            "/([ÌÍỊỈĨ])/",
-            "/([ÒÓỌỎÕÔỒỐỘỔỖƠỜỚỢỞỠ])/",
-            "/([ÙÚỤỦŨƯỪỨỰỬỮ])/",
-            "/([ỲÝỴỶỸ])/",
-            "/(Đ)/"
-        ), array(
-            'a', 'e', 'i', 'o', 'u', 'y', 'd', 'A', 'E', 'I', 'O', 'U', 'Y', 'D'
-        ), $str);
+            "/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ)/",
+            "/(Ò|Ó|Ọ|Ỏ|Õ|Ô|Ồ|Ố|Ộ|Ổ|Ỗ|Ơ|Ờ|Ớ|Ợ|Ở|Ỡ)/",
+            "/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ)/",
+            "/(Ù|Ú|Ụ|Ủ|Ũ|Ư|Ừ|Ứ|Ự|Ử|Ữ)/",
+            "/(Ì|Í|Ị|Ỉ|Ĩ)/",
+            "/(Ỳ|Ý|Ỵ|Ỷ|Ỹ)/",
+            "/(Đ)/",
+        ), array('a','o','e','u','i','y','d','A','O','E','U','I','Y','D'), $str);
     }
 }
