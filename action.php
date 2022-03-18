@@ -24,6 +24,7 @@ class action_plugin_hob extends DokuWiki_Action_Plugin
         $controller->register_hook('SEARCH_QUERY_FULLPAGE', 'BEFORE', $this, 'handleSearchQuery');
         $controller->register_hook('SEARCH_QUERY_PAGELOOKUP', 'BEFORE', $this, 'handleSearchQueryPageLookup');
         $controller->register_hook('FULLTEXT_SNIPPET_CREATE', 'BEFORE', $this, 'handleFulltextSnippet');
+        $controller->register_hook('FULLTEXT_PHRASE_MATCH', 'BEFORE', $this, 'handleFulltextSnippet');
     }
 
     /**
